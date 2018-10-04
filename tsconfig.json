@@ -1,0 +1,18 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "outDir": "./distribution/",
+    "declaration": true,
+    "module": "commonjs",
+    "removeComments": true,
+    "sourceMap": true,
+    "sourceRoot": "./source",
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es6",
+    "lib": ["es7"]
+  },
+  "include": ["source/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules"]
+}
