@@ -12,6 +12,7 @@
     "@types/chai": "^4.1.6",
     "@types/lodash": "^4.14.123",
     "@types/mocha": "^5.2.5",
+    "@types/moment": "^2.13.0",
     "@types/node": "^10.11.4",
     "chai": "^4.2.0",
     "chalk": "^2.4.1",
@@ -21,7 +22,8 @@
     "typescript": "^3.1.1"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0"
   },
   "prettier": {
     "printWidth": 120,
