@@ -1,0 +1,56 @@
+{
+  // Cf. https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "TypeScript - Current File",
+      "type": "node",
+      "request": "launch",
+      "args": ["${relativeFile}"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Mocha - Current File",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "outFiles": ["./distribution/**/*.js"],
+      "args": [
+        "--require",
+        "ts-node/register",
+        "-u",
+        "tdd",
+        "--colors",
+        "--recursive",
+        "${relativeFile}",
+        "--no-timeouts",
+        "--exit"
+      ],
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "protocol": "inspector"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Mocha",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "--require",
+        "ts-node/register",
+        "-u",
+        "tdd",
+        "--colors",
+        "--recursive",
+        "'${workspaceFolder}/source/**/*.test.ts'"
+      ],
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal"
+    }
+  ]
+}
