@@ -14,9 +14,15 @@
     "@types/node": "^10.11.4",
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
+    "prettier": "^1.15.2",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.1"
   },
   "dependencies": {
+  },
+  "prettier": {
+    "printWidth": 120,
+    "trailingComma": "es5",
+    "arrowParens": "always"
   }
 }
