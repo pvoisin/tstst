@@ -1,6 +1,6 @@
 {
   "name": "tstst",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "TypeScript, the Simple Things!",
   "keywords": ["util", "utils", "utility", "helper", "quantity", "date", "time", "amount", "parser"],
   "author": "Pierre Voisin <pierre.voisin@gmail.com>",
