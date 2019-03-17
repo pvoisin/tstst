@@ -1,29 +1,32 @@
 {
   "name": "tstst",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "TypeScript, the Simple Things!",
+  "keywords": ["util", "utils", "utility", "helper", "quantity", "date", "time", "amount", "parser"],
+  "author": "Pierre Voisin <pierre.voisin@gmail.com>",
+  "lisence": "ISC",
+  "main": "distribution/index.js",
+  "files": ["/distribution"],
   "scripts": {
     "test": "mocha --require ts-node/register -u tdd --recursive --colors **/*.test.ts",
     "compile": "tsc"
   },
-  "author": "Pierre Voisin <pierre.voisin@gmail.com>",
   "devDependencies": {
-    "@types/chai": "^4.1.6",
-    "@types/lodash": "^4.14.123",
+    "@types/chai": "^4.1.7",
     "@types/deep-freeze": "^0.1.1",
-    "@types/mocha": "^5.2.5",
+    "@types/lodash": "^4.14.123",
+    "@types/mocha": "^5.2.6",
     "@types/moment": "^2.13.0",
-    "@types/node": "^10.11.4",
+    "@types/node": "^12.0.0",
     "chai": "^4.2.0",
     "chalk": "^2.4.1",
     "mocha": "^5.2.0",
     "prettier": "^1.15.2",
-    "ts-node": "^7.0.1",
-    "typescript": "^3.1.1"
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
   },
   "dependencies": {
-    "bignumber.js": "^8.0.1",
+    "bignumber.js": "^8.1.1",
     "deep-freeze": "0.0.1",
     "lodash": "^4.17.11",
     "moment": "^2.24.0"
