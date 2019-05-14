@@ -12,13 +12,25 @@ export function isDateEqual(value: DateDefinition, expectedDate: DateDefinition)
 
 /** @see https://momentjs.com/docs/#/query/is-between/ */
 export function isDateBetween(
-  value: DateDefinition,
-  expectedDate: DateRangeDefinition,
+  dateDefinition: DateDefinition,
+  rangeDefinition: DateRangeDefinition,
   inclusivity: "()" | "[)" | "(]" | "[]" = "[]"
 ) {
-  const _moment: Moment = moment(value);
+  const _moment: Moment = moment(dateDefinition);
 
-  return _moment.isBetween(expectedDate[0], moment(expectedDate[1]), null, inclusivity);
+  let result: boolean;
+
+  const boundary1 = rangeDefinition[0];
+  const boundary2 = rangeDefinition[1];
+  if (boundary1 && boundary2) {
+    result = _moment.isBetween(rangeDefinition[0], rangeDefinition[1], null, inclusivity);
+  } else if (boundary1) {
+    result = inclusivity && inclusivity[0] === "(" ? _moment.isAfter(boundary1) : _moment.isSameOrAfter(boundary1);
+  } else if (boundary2) {
+    result = inclusivity && inclusivity[1] === ")" ? _moment.isBefore(boundary2) : _moment.isSameOrBefore(boundary2);
+  }
+
+  return result;
 }
 
 export type DateDefinition = string | Date | Moment;

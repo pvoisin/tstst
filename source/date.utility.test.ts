@@ -14,8 +14,21 @@ describe("Date Utility", () => {
   describe("#isDateBetween", () => {
     it("should support open ranges", () => {
       assert.isTrue(isDateBetween("2018-01-01T12:34:56", ["2018-01-01T12:34:56", null]));
-      assert.isFalse(isDateBetween("2018-01-01T12:34:56", ["2018-01-01T12:34:56.123", null]));
+      assert.isTrue(isDateBetween("2018-01-01T12:34:56", ["2018-01-01T12:34:56", null], "[]"));
+      assert.isTrue(isDateBetween("2018-01-01T12:34:56", ["2018-01-01T12:34:56", null], "[)"));
+      assert.isFalse(isDateBetween("2018-01-01T12:34:56", ["2018-01-01T12:34:56", null], "()"));
+      assert.isFalse(isDateBetween("2018-01-01T12:34:56", ["2018-01-01T12:34:56", null], "(]"));
+      assert.isFalse(isDateBetween("2018-01-01T12:34:56", ["2018-01-01T12:34:56.001", null]));
+      assert.isTrue(isDateBetween("2018-01-01T12:34:56.001", ["2018-01-01T12:34:56", null], "[]"));
+      assert.isTrue(isDateBetween("2018-01-01T12:34:56.001", ["2018-01-01T12:34:56", null], "[]"));
+      assert.isTrue(isDateBetween("2018-01-01T12:34:56.001", ["2018-01-01T12:34:56", null], "[)"));
+      assert.isTrue(isDateBetween("2018-01-01T12:34:56.001", ["2018-01-01T12:34:56", null], "()"));
+      assert.isTrue(isDateBetween("2018-01-01T12:34:56.001", ["2018-01-01T12:34:56", null], "(]"));
       assert.isTrue(isDateBetween("2018-01-01T12:34:56", [null, "2018-01-01T12:34:56"]));
+      assert.isTrue(isDateBetween("2018-01-01T12:34:56", [null, "2018-01-01T12:34:56"], "[]"));
+      assert.isFalse(isDateBetween("2018-01-01T12:34:56", [null, "2018-01-01T12:34:56"], "[)"));
+      assert.isFalse(isDateBetween("2018-01-01T12:34:56", [null, "2018-01-01T12:34:56"], "()"));
+      assert.isTrue(isDateBetween("2018-01-01T12:34:56", [null, "2018-01-01T12:34:56"], "(]"));
       assert.isFalse(isDateBetween("2018-01-01T12:34:56", [null, "2018-01-01T12:34:55.999"]));
     });
   });
