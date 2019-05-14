@@ -1,5 +1,5 @@
 import { Amount, convertAmount, getUnitForSymbol, IUnit } from "./quantity";
-import { extract } from "./string.utility";
+import { extract } from "../string.utility";
 
 export const AMOUNT_COMPONENT_PATTERN = /\s*((?:\+|-)?\d+(?:\.\d+)?)(°?[a-zA-Z²³]{1,3}(?:\/[a-zA-Z²³]{1,3})?)/;
 Object.freeze(AMOUNT_COMPONENT_PATTERN);

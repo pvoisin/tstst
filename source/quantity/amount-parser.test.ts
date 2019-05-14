@@ -1,7 +1,7 @@
 import { Amount, IUnit } from "./quantity";
 import { assert } from "chai";
 import { BIT, BYTE } from "./data-size-quantity";
-import { highlightValueRepresentation as hvr } from "./test.utility";
+import { highlightValueRepresentation as hvr } from "../test.utility";
 import { MICROSECOND, SECOND } from "./time-quantity";
 import { parseAmount } from "./amount-parser";
 

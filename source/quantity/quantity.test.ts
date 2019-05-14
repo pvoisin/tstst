@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { DAY, HOUR, MICROSECOND, MILLISECOND, MINUTE, NANOSECOND, SECOND, TIME, WEEK } from "./time-quantity";
 import { getUnitForSymbol, IQuantity, IUnit } from "./quantity";
-import { highlightValueRepresentation as hvr } from "./test.utility";
+import { highlightValueRepresentation as hvr } from "../test.utility";
 import {
   BIT,
   BYTE,
