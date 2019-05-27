@@ -133,6 +133,19 @@ export function getItemMap<T>(
     {}
   );
 }
+/*
+export function getItemMap<T, K = string>(items: T[], mapper: (value: T, index?: number) => K): Map<K, T> {
+  const map = new Map<K, T>();
+
+  let index: number = 0;
+  for (const item of items) {
+    const key: K = mapper(item, index++);
+    map.set(key, item);
+  }
+
+  return map;
+}
+//*/
 
 /**
  * Tells whether the provided model is matching with the expected model.
