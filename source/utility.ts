@@ -46,6 +46,8 @@ export const isObject = (value: any): value is Object => value !== null && typeo
 export const isString = (value: any): value is String => typeof value === "string";
 export const isArray = Array.isArray;
 
+export type TypeGuard<T> = (value: any) => value is T;
+
 export interface Factory<T> {
   create(...others: any[]): T;
 }
