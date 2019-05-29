@@ -46,6 +46,7 @@ export const isObject = (value: any): value is Object => value !== null && typeo
 export const isString = (value: any): value is String => typeof value === "string";
 export const isArray = <T>(value: any, isType?: TypeGuard<T>, length?: number): value is Array<T> =>
   Array.isArray(value) && (length === undefined || value.length === length) && (!isType || _.every(value, isType));
+export const isPair = <T>(value: any, isType?: TypeGuard<T>) => isArray(value, isType, 2);
 
 export type TypeGuard<T> = (value: any) => value is T;
 
