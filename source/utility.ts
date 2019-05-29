@@ -48,6 +48,7 @@ export const isArray = <T>(value: any, isType?: TypeGuard<T>, length?: number): 
   Array.isArray(value) && (length === undefined || value.length === length) && (!isType || _.every(value, isType));
 export const isPair = <T>(value: any, isType?: TypeGuard<T>) => isArray(value, isType, 2);
 
+export type Validator<T = any> = (value: T) => boolean;
 export type TypeGuard<T> = (value: any) => value is T;
 
 export interface Factory<T> {
