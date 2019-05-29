@@ -5,6 +5,10 @@
   "keywords": ["util", "utils", "utility", "helper", "quantity", "date", "time", "amount", "parser"],
   "author": "Pierre Voisin <pierre.voisin@gmail.com>",
   "lisence": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pvoisin/tstst.git"
+  },
   "main": "distribution/index.js",
   "files": ["/distribution"],
   "scripts": {
