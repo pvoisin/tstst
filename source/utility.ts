@@ -47,7 +47,7 @@ export const isString = (value: any): value is String => typeof value === "strin
 export const isArray = Array.isArray;
 
 export interface Factory<T> {
-  create(...others): T;
+  create(...others: any[]): T;
 }
 
 export interface Constructor<T> {
