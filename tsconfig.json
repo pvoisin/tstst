@@ -1,7 +1,7 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "outDir": "./distribution/",
+    "outDir": "./distribution",
     "declaration": true,
     "module": "commonjs",
     "removeComments": true,
