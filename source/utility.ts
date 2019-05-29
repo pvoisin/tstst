@@ -42,7 +42,7 @@ export function withSilentConsole<T>(operation: () => T): T {
   return result;
 }
 
-export const isObject = (object: any): object is Object => object !== null && typeof object === "object";
+export const isObject = (value: any): value is Object => value !== null && typeof value === "object";
 export const isArray = Array.isArray;
 
 export interface Factory<T> {
