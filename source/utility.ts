@@ -44,7 +44,8 @@ export function withSilentConsole<T>(operation: () => T): T {
 
 export const isObject = (value: any): value is Object => value !== null && typeof value === "object";
 export const isString = (value: any): value is String => typeof value === "string";
-export const isArray = Array.isArray;
+export const isArray = <T>(value: any, isType?: TypeGuard<T>, length?: number): value is Array<T> =>
+  Array.isArray(value) && (length === undefined || value.length === length) && (!isType || _.every(value, isType));
 
 export type TypeGuard<T> = (value: any) => value is T;
 
