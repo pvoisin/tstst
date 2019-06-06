@@ -174,7 +174,15 @@ describe("#isDisjunctionExpression", () => {
     });
   });
 });
-
+/*
+const expression = {
+  "|": [
+    { "!": { "=": [{ A: [1, 2, 3] }] } },
+    { "&": [{ "=": [{ A: [1, 2, 3] }] }, { "!=": [{ B: [4, 5, 6] }] }] },
+    { "|": [{ "=": [{ A: [1, 2, 3] }] }, { "!=": [{ B: [4, 5, 6] }] }] },
+  ],
+};
+//*/
 describe("Logic Helper", () => {
   describe("#getCondition", () => {
     it("with valid condition", () => {
