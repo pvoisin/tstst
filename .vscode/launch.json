@@ -18,7 +18,7 @@
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-      "outFiles": ["./distribution/**/*.js"],
+      //      "outFiles": ["./distribution/**/*.js"],
       "args": [
         "--require",
         "ts-node/register",
@@ -32,7 +32,7 @@
       ],
       "cwd": "${workspaceRoot}",
       "console": "integratedTerminal",
-      "sourceMaps": true,
+      //      "sourceMaps": true,
       "protocol": "inspector"
     },
     {
