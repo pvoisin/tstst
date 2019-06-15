@@ -1,20 +1,20 @@
 import { assert } from "chai";
-import { DAY, HOUR, MICROSECOND, MILLISECOND, MINUTE, NANOSECOND, SECOND, TIME, WEEK } from "./time-quantity";
-import { getUnitForSymbol, Quantity, Unit } from "./quantity";
 import { highlightValueRepresentation as hvr } from "../test.utility";
 import {
   BIT,
   BYTE,
   DATA_SIZE,
+  GIGABIT,
+  GIGABYTE,
   KILOBIT,
   KILOBYTE,
   MEGABIT,
   MEGABYTE,
-  GIGABIT,
-  GIGABYTE,
   TERABIT,
   TERABYTE,
 } from "./data-size-quantity";
+import { getUnitForSymbol, Quantity, Unit } from "./quantity";
+import { DAY, HOUR, MICROSECOND, MILLISECOND, MINUTE, NANOSECOND, SECOND, TIME, WEEK } from "./time-quantity";
 
 describe("Quantity, Unit & Amount", () => {
   describe("#getUnitForSymbol", () => {

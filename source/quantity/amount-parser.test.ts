@@ -1,9 +1,9 @@
-import { Amount, Unit } from "./quantity";
 import { assert } from "chai";
-import { BIT, BYTE } from "./data-size-quantity";
 import { highlightValueRepresentation as hvr } from "../test.utility";
-import { MICROSECOND, SECOND } from "./time-quantity";
 import { parseAmount } from "./amount-parser";
+import { BIT, BYTE } from "./data-size-quantity";
+import { Amount, Unit } from "./quantity";
+import { MICROSECOND, SECOND } from "./time-quantity";
 
 describe("AmountParser", () => {
   describe("#parse", () => {

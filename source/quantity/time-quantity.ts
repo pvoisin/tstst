@@ -1,5 +1,5 @@
-import { DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from "./quantity";
 import * as deepFreeze from "deep-freeze";
+import { DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from "./quantity";
 
 export const TIME: Quantity = new DefaultQuantity("time");
 

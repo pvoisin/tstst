@@ -1,6 +1,6 @@
-import { Amount, convertAmount, Unit } from "./quantity";
 import { assert } from "chai";
 import { highlightValueRepresentation as hvr } from "../test.utility";
+import { Amount, convertAmount, Unit } from "./quantity";
 
 export function testConvertAmount(expectations: [Amount, Unit, number | string][]) {
   describe("#convertAmount", () => {
