@@ -1,13 +1,13 @@
 import * as knex from "knex";
 import { Dictionary, isString } from "../../..";
-import { Query, SelectClause, FromClause, JoinClause, WhereClause, JoinType } from "../sql.utility";
+import { FromClause, JoinClause, JoinType, Query, SelectClause, WhereClause } from "../sql.utility";
 
 export class KnexQuery implements Query<knex, knex.QueryBuilder> {
-  public adaptor: knex;
-  public builder: knex.QueryBuilder;
-  public correlationNames: Dictionary<string>;
+  adaptor: knex;
+  builder: knex.QueryBuilder;
+  correlationNames: Dictionary<string>;
 
-  public constructor(adaptor: knex, correlationNames: Dictionary<string>) {
+  constructor(adaptor: knex, correlationNames: Dictionary<string>) {
     this.adaptor = adaptor;
     this.correlationNames = { ...correlationNames };
     this.builder = this.getQueryBuilder();
@@ -17,22 +17,22 @@ export class KnexQuery implements Query<knex, knex.QueryBuilder> {
     return this.adaptor.queryBuilder();
   }
 
-  public applySelectClause(clause: SelectClause): KnexQuery {
+  applySelectClause(clause: SelectClause): KnexQuery {
     applySelectClause(this.builder, clause);
     return this;
   }
 
-  public applyFromClause<P>(clause: FromClause): KnexQuery {
+  applyFromClause<P>(clause: FromClause): KnexQuery {
     // TODO
     return this;
   }
 
-  public applyWhereClause<P>(clause: WhereClause<P>): KnexQuery {
+  applyWhereClause<P>(clause: WhereClause<P>): KnexQuery {
     // TODO
     return this;
   }
 
-  public applyJoinClause<T>(clause: JoinClause<T>, joinType?: JoinType): KnexQuery {
+  applyJoinClause<T>(clause: JoinClause<T>, joinType?: JoinType): KnexQuery {
     // TODO
     return this;
   }
