@@ -1,12 +1,12 @@
 import BigNumber from "bignumber.js";
 import { getCartesianProduct } from "../collection.utility";
 
-export interface IQuantity {
+export interface Quantity {
   name: string;
   unitScale: UnitScale;
 }
 
-export class Quantity implements IQuantity {
+export class DefaultQuantity implements Quantity {
   public name: string;
   public unitScale: UnitScale;
 
@@ -20,18 +20,18 @@ export class Quantity implements IQuantity {
   }
 }
 
-export interface IUnit {
+export interface Unit {
   name: string;
-  quantity: IQuantity;
+  quantity: Quantity;
   symbol: string;
 }
 
-export class Unit implements IUnit {
-  public quantity: IQuantity;
+export class DefaultUnit implements Unit {
   public name: string;
+  public quantity: Quantity;
   public symbol: string;
 
-  public constructor(quantity: IQuantity, name: string, symbol: string) {
+  public constructor(quantity: Quantity, name: string, symbol: string) {
     this.quantity = quantity;
     this.name = name;
     this.symbol = symbol;
@@ -43,16 +43,16 @@ export class Unit implements IUnit {
 }
 
 export interface UnitScale {
-  [factor: string]: IUnit;
+  [factor: string]: Unit;
 }
 
 export interface Amount {
   value: number;
-  unit: IUnit;
+  unit: Unit;
 }
 
-export function getUnitForSymbol(symbol: string, quantity: IQuantity): IUnit {
-  let result: IUnit = null;
+export function getUnitForSymbol(symbol: string, quantity: Quantity): Unit {
+  let result: Unit = null;
 
   for (const unit of (Object as any).values(quantity.unitScale)) {
     if (unit.symbol === symbol) {
@@ -64,18 +64,18 @@ export function getUnitForSymbol(symbol: string, quantity: IQuantity): IUnit {
   return result;
 }
 
-const UNIT_CONVERSIONS: Map<IUnit, Map<IUnit, (amount: Amount) => number>> = new Map();
+const UNIT_CONVERSIONS: Map<Unit, Map<Unit, (amount: Amount) => number>> = new Map();
 
-export function registerUnitConversion<U1 extends IUnit, U2 extends IUnit>(
-  unit1: U1,
-  unit2: U2,
+export function registerUnitConversion(
+  unit1: Unit,
+  unit2: Unit,
   conversion: (amount: number) => number
 ): (amount: Amount) => number {
   if (unit1.quantity !== unit2.quantity) {
     throw new Error(`Incompatible quantities! ${unit1.quantity} ⇄ ${unit2.quantity}`);
   }
 
-  let conversions: Map<IUnit, (value: Amount) => number> = UNIT_CONVERSIONS.get(unit1);
+  let conversions: Map<Unit, (value: Amount) => number> = UNIT_CONVERSIONS.get(unit1);
   if (!conversions) {
     conversions = new Map();
     UNIT_CONVERSIONS.set(unit1, conversions);
@@ -115,6 +115,6 @@ export function registerUnitConversions(unitScale: UnitScale) {
   }
 }
 
-export function convertAmount(amount: Amount, unit: IUnit): number {
+export function convertAmount(amount: Amount, unit: Unit): number {
   return UNIT_CONVERSIONS.get(amount.unit).get(unit)(amount);
 }

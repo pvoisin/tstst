@@ -1,4 +1,4 @@
-import { Amount, convertAmount, getUnitForSymbol, IUnit } from "./quantity";
+import { Amount, convertAmount, getUnitForSymbol, Unit } from "./quantity";
 import { extract } from "../string.utility";
 
 export const AMOUNT_COMPONENT_PATTERN = /\s*((?:\+|-)?\d+(?:\.\d+)?)(°?[a-zA-Z²³]{1,3}(?:\/[a-zA-Z²³]{1,3})?)/;
@@ -6,7 +6,7 @@ Object.freeze(AMOUNT_COMPONENT_PATTERN);
 //const AMOUNT_PATTERN = new RegExp(`(?:${AMOUNT_COMPONENT_PATTERN.source})+$`);
 
 export class AmountParser {
-  public parse(representation: string, unit: IUnit): Amount {
+  public parse(representation: string, unit: Unit): Amount {
     let result: Amount = null;
 
     const components = extract(representation, AMOUNT_COMPONENT_PATTERN, true);
@@ -34,4 +34,4 @@ export class AmountParser {
 
 export const parser = new AmountParser();
 
-export const parseAmount: (representation: string, unit: IUnit) => Amount = parser.parse.bind(parser);
+export const parseAmount: (representation: string, unit: Unit) => Amount = parser.parse.bind(parser);

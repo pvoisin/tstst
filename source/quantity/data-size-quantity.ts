@@ -1,18 +1,18 @@
-import { IQuantity, IUnit, Quantity, registerUnitConversions, Unit, UnitScale } from "./quantity";
+import { DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from "./quantity";
 import * as deepFreeze from "deep-freeze";
 
-export const DATA_SIZE: IQuantity = new Quantity("data size");
+export const DATA_SIZE: Quantity = new DefaultQuantity("data size");
 
-export const BIT: IUnit = new Unit(DATA_SIZE, "bit", "b");
-export const BYTE: IUnit = new Unit(DATA_SIZE, "byte", "B");
-export const KILOBIT: IUnit = new Unit(DATA_SIZE, "kilobit", "kb");
-export const KILOBYTE: IUnit = new Unit(DATA_SIZE, "kilobyte", "kB");
-export const MEGABIT: IUnit = new Unit(DATA_SIZE, "megabit", "Mb");
-export const MEGABYTE: IUnit = new Unit(DATA_SIZE, "megabyte", "MB");
-export const GIGABIT: IUnit = new Unit(DATA_SIZE, "gigabit", "Gb");
-export const GIGABYTE: IUnit = new Unit(DATA_SIZE, "gigabyte", "GB");
-export const TERABIT: IUnit = new Unit(DATA_SIZE, "terabit", "Tb");
-export const TERABYTE: IUnit = new Unit(DATA_SIZE, "terabyte", "TB");
+export const BIT: Unit = new DefaultUnit(DATA_SIZE, "bit", "b");
+export const BYTE: Unit = new DefaultUnit(DATA_SIZE, "byte", "B");
+export const KILOBIT: Unit = new DefaultUnit(DATA_SIZE, "kilobit", "kb");
+export const KILOBYTE: Unit = new DefaultUnit(DATA_SIZE, "kilobyte", "kB");
+export const MEGABIT: Unit = new DefaultUnit(DATA_SIZE, "megabit", "Mb");
+export const MEGABYTE: Unit = new DefaultUnit(DATA_SIZE, "megabyte", "MB");
+export const GIGABIT: Unit = new DefaultUnit(DATA_SIZE, "gigabit", "Gb");
+export const GIGABYTE: Unit = new DefaultUnit(DATA_SIZE, "gigabyte", "GB");
+export const TERABIT: Unit = new DefaultUnit(DATA_SIZE, "terabit", "Tb");
+export const TERABYTE: Unit = new DefaultUnit(DATA_SIZE, "terabyte", "TB");
 
 export const DATA_SIZE_UNIT_SCALE: UnitScale = {
   1: BIT,

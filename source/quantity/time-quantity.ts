@@ -1,16 +1,16 @@
-import { IQuantity, IUnit, Quantity, registerUnitConversions, Unit, UnitScale } from "./quantity";
+import { DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from "./quantity";
 import * as deepFreeze from "deep-freeze";
 
-export const TIME: IQuantity = new Quantity("time");
+export const TIME: Quantity = new DefaultQuantity("time");
 
-export const NANOSECOND: IUnit = new Unit(TIME, "nanosecond", "ns");
-export const MICROSECOND: IUnit = new Unit(TIME, "microsecond", "µs");
-export const MILLISECOND: IUnit = new Unit(TIME, "mllisecond", "ms");
-export const SECOND: IUnit = new Unit(TIME, "second", "s");
-export const MINUTE: IUnit = new Unit(TIME, "minute", "m");
-export const HOUR: IUnit = new Unit(TIME, "hour", "h");
-export const DAY: IUnit = new Unit(TIME, "day", "d");
-export const WEEK: IUnit = new Unit(TIME, "week", "w");
+export const NANOSECOND: Unit = new DefaultUnit(TIME, "nanosecond", "ns");
+export const MICROSECOND: Unit = new DefaultUnit(TIME, "microsecond", "µs");
+export const MILLISECOND: Unit = new DefaultUnit(TIME, "mllisecond", "ms");
+export const SECOND: Unit = new DefaultUnit(TIME, "second", "s");
+export const MINUTE: Unit = new DefaultUnit(TIME, "minute", "m");
+export const HOUR: Unit = new DefaultUnit(TIME, "hour", "h");
+export const DAY: Unit = new DefaultUnit(TIME, "day", "d");
+export const WEEK: Unit = new DefaultUnit(TIME, "week", "w");
 
 export const TIME_UNIT_SCALE: UnitScale = {
   "0.000000001": NANOSECOND,

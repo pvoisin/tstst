@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { DAY, HOUR, MICROSECOND, MILLISECOND, MINUTE, NANOSECOND, SECOND, TIME, WEEK } from "./time-quantity";
-import { getUnitForSymbol, IQuantity, IUnit } from "./quantity";
+import { getUnitForSymbol, Quantity, Unit } from "./quantity";
 import { highlightValueRepresentation as hvr } from "../test.utility";
 import {
   BIT,
@@ -18,7 +18,7 @@ import {
 
 describe("Quantity, Unit & Amount", () => {
   describe("#getUnitForSymbol", () => {
-    const expectations: [string, IQuantity, IUnit][] = [
+    const expectations: [string, Quantity, Unit][] = [
       ["ns", TIME, NANOSECOND],
       ["µs", TIME, MICROSECOND],
       ["ms", TIME, MILLISECOND],

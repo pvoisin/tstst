@@ -1,4 +1,4 @@
-import { Amount, IUnit } from "./quantity";
+import { Amount, Unit } from "./quantity";
 import { assert } from "chai";
 import { BIT, BYTE } from "./data-size-quantity";
 import { highlightValueRepresentation as hvr } from "../test.utility";
@@ -7,7 +7,7 @@ import { parseAmount } from "./amount-parser";
 
 describe("AmountParser", () => {
   describe("#parse", () => {
-    const expectations: [string, IUnit, Amount][] = [
+    const expectations: [string, Unit, Amount][] = [
       ["+1s 2w-3d", SECOND, { value: 950401, unit: SECOND }],
       ["howdy +1s 2w-3d", SECOND, null],
       ["\t8b 1B\n2kB", BIT, { value: 16016, unit: BIT }],
