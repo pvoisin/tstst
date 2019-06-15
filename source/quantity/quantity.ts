@@ -3,16 +3,16 @@ import { getCartesianProduct } from "../collection.utility";
 
 export interface Quantity {
   name: string;
-  unitScale: UnitScale;
+  unitScale: UnitScale<this>;
 }
 
 export class DefaultQuantity implements Quantity {
   name: string;
-  unitScale: UnitScale;
+  unitScale: UnitScale<this>;
 
   constructor(name: string, unitScale: UnitScale = {}) {
     this.name = name;
-    this.unitScale = unitScale;
+    this.unitScale = unitScale as UnitScale<this>;
   }
 
   toString(): string {
@@ -20,18 +20,18 @@ export class DefaultQuantity implements Quantity {
   }
 }
 
-export interface Unit {
+export interface Unit<Q extends Quantity = Quantity> {
   name: string;
-  quantity: Quantity;
+  quantity: Q;
   symbol: string;
 }
 
-export class DefaultUnit implements Unit {
+export class DefaultUnit<Q extends Quantity = Quantity> implements Unit<Q> {
   name: string;
-  quantity: Quantity;
+  quantity: Q;
   symbol: string;
 
-  constructor(quantity: Quantity, name: string, symbol: string) {
+  constructor(quantity: Q, name: string, symbol: string) {
     this.quantity = quantity;
     this.name = name;
     this.symbol = symbol;
@@ -42,17 +42,17 @@ export class DefaultUnit implements Unit {
   }
 }
 
-export interface UnitScale {
-  [factor: string]: Unit;
+export interface UnitScale<Q extends Quantity = Quantity> {
+  [factor: string]: Unit<Q>;
 }
 
-export interface Amount {
+export interface Amount<Q extends Quantity = Quantity, U extends Unit<Q> = Unit<Q>> {
   value: number;
-  unit: Unit;
+  unit: U;
 }
 
-export function getUnitForSymbol(symbol: string, quantity: Quantity): Unit {
-  let result: Unit = null;
+export function getUnitForSymbol<Q extends Quantity>(symbol: string, quantity: Q): Unit<Q> {
+  let result: Unit<Q> = null;
 
   for (const unit of (Object as any).values(quantity.unitScale)) {
     if (unit.symbol === symbol) {
@@ -90,7 +90,7 @@ export function registerUnitConversion(
   return wrapper;
 }
 
-export function registerUnitConversions(unitScale: UnitScale) {
+export function registerUnitConversions<Q extends Quantity>(unitScale: UnitScale<Q>) {
   const referenceUnit = unitScale[1];
 
   if (!referenceUnit) {
@@ -115,6 +115,6 @@ export function registerUnitConversions(unitScale: UnitScale) {
   }
 }
 
-export function convertAmount(amount: Amount, unit: Unit): number {
+export function convertAmount<Q extends Quantity, U extends Unit<Q>>(amount: Amount<Q>, unit: U): number {
   return UNIT_CONVERSIONS.get(amount.unit).get(unit)(amount);
 }
