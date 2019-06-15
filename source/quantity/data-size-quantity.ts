@@ -1,20 +1,38 @@
 import * as deepFreeze from "deep-freeze";
-import { DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from "./quantity";
+import { Amount, DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from ".";
 
-export const DATA_SIZE: Quantity = new DefaultQuantity("data size");
+export interface DataSizeQuantity extends Quantity {}
 
-export const BIT: Unit = new DefaultUnit(DATA_SIZE, "bit", "b");
-export const BYTE: Unit = new DefaultUnit(DATA_SIZE, "byte", "B");
-export const KILOBIT: Unit = new DefaultUnit(DATA_SIZE, "kilobit", "kb");
-export const KILOBYTE: Unit = new DefaultUnit(DATA_SIZE, "kilobyte", "kB");
-export const MEGABIT: Unit = new DefaultUnit(DATA_SIZE, "megabit", "Mb");
-export const MEGABYTE: Unit = new DefaultUnit(DATA_SIZE, "megabyte", "MB");
-export const GIGABIT: Unit = new DefaultUnit(DATA_SIZE, "gigabit", "Gb");
-export const GIGABYTE: Unit = new DefaultUnit(DATA_SIZE, "gigabyte", "GB");
-export const TERABIT: Unit = new DefaultUnit(DATA_SIZE, "terabit", "Tb");
-export const TERABYTE: Unit = new DefaultUnit(DATA_SIZE, "terabyte", "TB");
+export const DATA_SIZE: DataSizeQuantity = new DefaultQuantity("data size");
 
-export const DATA_SIZE_UNIT_SCALE: UnitScale = {
+export interface DataSizeUnit extends Unit<DataSizeQuantity> {}
+
+export interface DataSizeAmount extends Amount<DataSizeQuantity, DataSizeUnit> {}
+
+export function isDataSizeAmount(amount: Amount): amount is DataSizeAmount {
+  return amount && amount.unit && amount.unit.quantity === DATA_SIZE;
+}
+
+export class DefaultDataSizeUnit extends DefaultUnit implements DataSizeUnit {
+  name: string;
+
+  constructor(name: string, symbol: string) {
+    super(DATA_SIZE, name, symbol);
+  }
+}
+
+export const BIT: DataSizeUnit = new DefaultDataSizeUnit("bit", "b");
+export const BYTE: DataSizeUnit = new DefaultDataSizeUnit("byte", "B");
+export const KILOBIT: DataSizeUnit = new DefaultDataSizeUnit("kilobit", "kb");
+export const KILOBYTE: DataSizeUnit = new DefaultDataSizeUnit("kilobyte", "kB");
+export const MEGABIT: DataSizeUnit = new DefaultDataSizeUnit("megabit", "Mb");
+export const MEGABYTE: DataSizeUnit = new DefaultDataSizeUnit("megabyte", "MB");
+export const GIGABIT: DataSizeUnit = new DefaultDataSizeUnit("gigabit", "Gb");
+export const GIGABYTE: DataSizeUnit = new DefaultDataSizeUnit("gigabyte", "GB");
+export const TERABIT: DataSizeUnit = new DefaultDataSizeUnit("terabit", "Tb");
+export const TERABYTE: DataSizeUnit = new DefaultDataSizeUnit("terabyte", "TB");
+
+export const DATA_SIZE_UNIT_SCALE: UnitScale<DataSizeQuantity> = {
   1: BIT,
   8: BYTE,
   [1000]: KILOBIT,
