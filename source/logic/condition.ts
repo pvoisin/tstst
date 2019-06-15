@@ -42,7 +42,7 @@ export function isConjunction(value: any): value is Condition {
 }
 
 export class InvalidConditionExpressionError extends Error {
-  public name: string = this.constructor.name;
+  name: string = this.constructor.name;
 }
 
 /**
@@ -216,7 +216,7 @@ export const DEFAULT_OPERATOR_SERIALIZERS: { [key in Operator]: string } = {
 };
 /*
 export class ConditionSerializer {
-  public serialize(condition: ConditionExpression, result?: string): string {
+  serialize(condition: ConditionExpression, result?: string): string {
     if (condition) {
       if (!result) {
         result = "";
@@ -230,7 +230,7 @@ export class ConditionSerializer {
 }
 
 export class PredicateSerializer {
-  public serialize(predicate: Predicate): string {
+  serialize(predicate: Predicate): string {
     let result: string;
 
     if (predicate) {
@@ -251,7 +251,7 @@ export class PredicateSerializer {
 }
 
 export class InvalidFieldKeyError extends Error {
-  public name: string = this.constructor.name;
-  public data: any;
+  name: string = this.constructor.name;
+  data: any;
 }
 //*/
