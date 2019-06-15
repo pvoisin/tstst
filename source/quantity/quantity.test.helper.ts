@@ -1,3 +1,4 @@
+import BigNumber from "bignumber.js";
 import { assert } from "chai";
 import { highlightValueRepresentation as hvr } from "../test.utility";
 import { Amount, convertAmount, Unit } from "./quantity";
@@ -13,11 +14,7 @@ export function testConvertAmount(expectations: [Amount, Unit, number | string][
       )}`, () => {
         let result: any = convertAmount(amount, unit);
         if (typeof expectedValue === "string") {
-          let precision = expectedValue.length;
-          const match = /^[0.]+/.exec(expectedValue);
-          if (match) {
-            precision = precision - match[0].length;
-          }
+          let precision = new BigNumber(expectedValue).precision();
           result = result.toPrecision(precision);
         }
 
