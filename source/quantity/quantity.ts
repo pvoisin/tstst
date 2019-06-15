@@ -7,15 +7,15 @@ export interface Quantity {
 }
 
 export class DefaultQuantity implements Quantity {
-  public name: string;
-  public unitScale: UnitScale;
+  name: string;
+  unitScale: UnitScale;
 
-  public constructor(name: string, unitScale: UnitScale = {}) {
+  constructor(name: string, unitScale: UnitScale = {}) {
     this.name = name;
     this.unitScale = unitScale;
   }
 
-  public toString(): string {
+  toString(): string {
     return this.name;
   }
 }
@@ -27,17 +27,17 @@ export interface Unit {
 }
 
 export class DefaultUnit implements Unit {
-  public name: string;
-  public quantity: Quantity;
-  public symbol: string;
+  name: string;
+  quantity: Quantity;
+  symbol: string;
 
-  public constructor(quantity: Quantity, name: string, symbol: string) {
+  constructor(quantity: Quantity, name: string, symbol: string) {
     this.quantity = quantity;
     this.name = name;
     this.symbol = symbol;
   }
 
-  public toString(): string {
+  toString(): string {
     return this.symbol;
   }
 }
