@@ -1,18 +1,36 @@
 import * as deepFreeze from "deep-freeze";
-import { DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from "./quantity";
+import { Amount, DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from ".";
 
-export const TIME: Quantity = new DefaultQuantity("time");
+export interface TimeQuantity extends Quantity {}
 
-export const NANOSECOND: Unit = new DefaultUnit(TIME, "nanosecond", "ns");
-export const MICROSECOND: Unit = new DefaultUnit(TIME, "microsecond", "µs");
-export const MILLISECOND: Unit = new DefaultUnit(TIME, "mllisecond", "ms");
-export const SECOND: Unit = new DefaultUnit(TIME, "second", "s");
-export const MINUTE: Unit = new DefaultUnit(TIME, "minute", "m");
-export const HOUR: Unit = new DefaultUnit(TIME, "hour", "h");
-export const DAY: Unit = new DefaultUnit(TIME, "day", "d");
-export const WEEK: Unit = new DefaultUnit(TIME, "week", "w");
+export const TIME: TimeQuantity = new DefaultQuantity("time");
 
-export const TIME_UNIT_SCALE: UnitScale = {
+export interface TimeUnit extends Unit<TimeQuantity> {}
+
+export interface TimeAmount extends Amount<TimeQuantity, TimeUnit> {}
+
+export function isTimeAmount(amount: Amount): amount is TimeAmount {
+  return amount && amount.unit && amount.unit.quantity === TIME;
+}
+
+export class DefaultTimeUnit extends DefaultUnit implements TimeUnit {
+  name: string;
+
+  constructor(name: string, symbol: string) {
+    super(TIME, name, symbol);
+  }
+}
+
+export const NANOSECOND: TimeUnit = new DefaultTimeUnit("nanosecond", "ns");
+export const MICROSECOND: TimeUnit = new DefaultTimeUnit("microsecond", "µs");
+export const MILLISECOND: TimeUnit = new DefaultTimeUnit("mllisecond", "ms");
+export const SECOND: TimeUnit = new DefaultTimeUnit("second", "s");
+export const MINUTE: TimeUnit = new DefaultTimeUnit("minute", "m");
+export const HOUR: TimeUnit = new DefaultTimeUnit("hour", "h");
+export const DAY: TimeUnit = new DefaultTimeUnit("day", "d");
+export const WEEK: TimeUnit = new DefaultTimeUnit("week", "w");
+
+export const TIME_UNIT_SCALE: UnitScale<TimeQuantity> = {
   "0.000000001": NANOSECOND,
   "0.000001": MICROSECOND,
   "0.001": MILLISECOND,

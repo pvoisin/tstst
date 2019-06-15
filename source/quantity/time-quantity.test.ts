@@ -1,4 +1,4 @@
-import { DAY, HOUR, MICROSECOND, MILLISECOND, MINUTE, NANOSECOND, SECOND, WEEK } from "./time-quantity";
+import { DAY, HOUR, MICROSECOND, MILLISECOND, MINUTE, NANOSECOND, SECOND, WEEK } from ".";
 import { testConvertAmount } from "./quantity.test.helper";
 
 testConvertAmount([
