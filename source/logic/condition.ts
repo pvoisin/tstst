@@ -63,6 +63,7 @@ export class InvalidConditionExpressionError extends Error {
  *    ]
  *  }
  */
+// TODO: make this implementation a "condition parser", provided with a "predicate parser"
 export function getCondition<P>(expression: object, operator: Operator = Operator.AND): Condition<P> {
   if (expression && !isObject(expression)) {
     throw new InvalidConditionExpressionError(`Invalid condition expression! ${expression}`);

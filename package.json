@@ -20,9 +20,7 @@
     "url": "git+https://github.com/pvoisin/tstst.git"
   },
   "main": "distribution/index.js",
-  "files": [
-    "/distribution"
-  ],
+  "files": ["/distribution"],
   "scripts": {
     "test": "mocha --require ts-node/register -u tdd --recursive --colors **/*.test.ts",
     "compile": "tsc"
@@ -42,7 +40,7 @@
     "mocha": "^5.2.0",
     "prettier": "^1.15.2",
     "sinon": "^7.3.2",
-    "ts-node": "^8.1.0",
+    "ts-node": "^8.2.0",
     "typescript": "^3.4.5"
   },
   "dependencies": {
