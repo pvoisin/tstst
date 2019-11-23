@@ -20,6 +20,7 @@
     "url": "git+https://github.com/pvoisin/tstst.git"
   },
   "main": "distribution/index.js",
+  "types": "distribution/index.d.ts",
   "files": [
     "/distribution"
   ],
@@ -37,9 +38,9 @@
     "@types/node": "^12.12.9",
     "@types/sinon": "^7.5.0",
     "chai": "^4.2.0",
-    "chalk": "^2.4.1",
-    "knex": "^0.16.5",
-    "lerna": "3.18.4",
+    "chalk": "^3.0.0",
+    "knex": "^0.20.2",
+    "lerna": "^3.19.0",
     "mocha": "^6.2.2",
     "prettier": "^1.19.1",
     "sinon": "^7.5.0",

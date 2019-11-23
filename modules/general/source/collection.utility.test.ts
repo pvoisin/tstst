@@ -1,6 +1,5 @@
-import * as _ from "lodash";
 import { assert } from "chai";
-import { highlightValueRepresentation as hvr } from "./test.utility";
+import { concat, isBoolean, isNumber, isUndefined, merge } from "lodash";
 import {
   getCartesianProduct,
   isCollection,
@@ -11,30 +10,31 @@ import {
   removeMissingValues,
 } from "./collection.utility";
 import {
-  EMPTY_VALUES,
-  NOT_EMPTY_VALUES,
-  EMPTY_OBJECT,
   EMPTY_ARRAY,
+  EMPTY_FUNCTION,
   EMPTY_MAP,
-  NOT_EMPTY_MAP,
+  EMPTY_OBJECT,
+  EMPTY_PATTERN,
   EMPTY_SET,
-  NOT_EMPTY_SET,
+  EMPTY_VALUES,
   EMPTY_VALUES_MAP,
+  NOT_EMPTY_MAP,
+  NOT_EMPTY_SET,
+  NOT_EMPTY_VALUES,
   NOT_EMPTY_VALUES_MAP,
   NOT_MISSING_VALUES,
   NOT_MISSING_VALUES_MAP,
-  EMPTY_FUNCTION,
-  EMPTY_PATTERN,
 } from "./test.helper";
+import { getValueRepresentation as hvr } from "./utility";
 
 describe("Collection Utility", () => {
   describe("#isEmpty", () => {
-    EMPTY_VALUES.forEach((value) => {
+    EMPTY_VALUES.forEach(value => {
       it(`should return ${hvr(true)} for ${hvr(value, true)}`, () => {
         assert.isTrue(isEmpty(value));
       });
     });
-    NOT_EMPTY_VALUES.forEach((value) => {
+    NOT_EMPTY_VALUES.forEach(value => {
       it(`should return ${hvr(false)} for ${hvr(value, true)}`, () => {
         assert.isFalse(isEmpty(value));
       });
@@ -54,13 +54,13 @@ describe("Collection Utility", () => {
 
   describe("#removeEmptyValues", () => {
     it("should remove empty values from arrays", () => {
-      const values = _.concat([], EMPTY_VALUES, NOT_EMPTY_VALUES);
+      const values = concat([], EMPTY_VALUES, NOT_EMPTY_VALUES);
       const result = removeEmptyValues(values);
       assert.deepEqual(result, NOT_EMPTY_VALUES);
     });
 
     it("should remove empty values from objects", () => {
-      const values = _.merge({}, EMPTY_VALUES_MAP, NOT_EMPTY_VALUES_MAP);
+      const values = merge({}, EMPTY_VALUES_MAP, NOT_EMPTY_VALUES_MAP);
       const result = removeEmptyValues(values);
       assert.deepEqual(result, NOT_EMPTY_VALUES_MAP);
     });
@@ -68,13 +68,13 @@ describe("Collection Utility", () => {
 
   describe("#removeMissingValues", () => {
     it("should remove missing values from arrays", () => {
-      const values = _.concat([], EMPTY_VALUES, NOT_EMPTY_VALUES);
+      const values = concat([], EMPTY_VALUES, NOT_EMPTY_VALUES);
       const result = removeMissingValues(values);
       assert.deepEqual(result, NOT_MISSING_VALUES);
     });
 
     it("should remove missing values from objects", () => {
-      const values = _.merge({}, EMPTY_VALUES_MAP, NOT_EMPTY_VALUES_MAP);
+      const values = merge({}, EMPTY_VALUES_MAP, NOT_EMPTY_VALUES_MAP);
       const result = removeMissingValues(values);
       assert.deepEqual(result, NOT_MISSING_VALUES_MAP);
     });
@@ -141,9 +141,9 @@ describe("Collection Utility", () => {
       });
 
       it("should support compatibility rules", () => {
-        assert.isTrue(isCompatible({ A: 1, B: 2, C: 3 }, { A: _.isNumber, C: 3 }));
-        assert.isFalse(isCompatible({ A: 1, B: 2, C: 3 }, { B: _.isBoolean }));
-        assert.isTrue(isCompatible({ A: 1, B: 2, C: 3 }, { D: _.isUndefined }));
+        assert.isTrue(isCompatible({ A: 1, B: 2, C: 3 }, { A: isNumber, C: 3 }));
+        assert.isFalse(isCompatible({ A: 1, B: 2, C: 3 }, { B: isBoolean }));
+        assert.isTrue(isCompatible({ A: 1, B: 2, C: 3 }, { D: isUndefined }));
       });
     });
   });

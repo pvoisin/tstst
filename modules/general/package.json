@@ -24,6 +24,7 @@
     "compile": "tsc"
   },
   "dependencies": {
+    "deep-freeze": "^0.0.1",
     "lodash": "^4.17.15"
   }
 }

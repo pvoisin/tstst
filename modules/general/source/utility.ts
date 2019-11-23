@@ -16,7 +16,7 @@ export function getTypeRepresentation(value: any) {
   return isObject(value) ? value.constructor.name : typeof value;
 }
 
-export function getValueRepresentation(value: unknown, includeType: boolean = false): string {
+export function getValueRepresentation<T = unknown>(value: T, includeTypeRepresentation: boolean = false): string {
   let representation: string;
 
   try {
@@ -25,20 +25,23 @@ export function getValueRepresentation(value: unknown, includeType: boolean = fa
     representation = String(value);
   }
 
-  if (includeType) {
+  if (includeTypeRepresentation) {
     representation += ` (${getTypeRepresentation(value)})`;
   }
 
   return representation;
 }
 
-export function getCollectionRepresentation(items: any[], includeType: boolean = false): string {
-  return (
-    items &&
-    "[" +
-      items
-        .map(item => getValueRepresentation(item) + (includeType ? ` (${getTypeRepresentation(item)})` : ""))
-        .join(", ") +
-      "]"
-  );
+export function getCollectionRepresentation<T = unknown>(
+  items: T[],
+  includeTypeRepresentation: boolean = false
+): string {
+  let representation: string;
+
+  if (items) {
+    representation =
+      "[" + items.map((item: T) => getValueRepresentation(item, includeTypeRepresentation)).join(", ") + "]";
+  }
+
+  return representation;
 }

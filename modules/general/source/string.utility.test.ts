@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { extract, prefix, suffix } from "./string.utility";
-import { highlightCollectionRepresentation as hcr, highlightValueRepresentation as hvr } from "./test.utility";
+import { getCollectionRepresentation as $c, getValueRepresentation as $v } from "./utility";
 
 describe("String Utility", () => {
   describe("#prefix", () => {
@@ -48,7 +48,7 @@ describe("String Utility", () => {
     for (const expectation of expectations) {
       const subject = expectation.parameters[0];
 
-      let title = `should return ${hcr(expectation.expectedResults)} for ${hvr(subject)}`;
+      let title = `should return ${$c(expectation.expectedResults)} for ${$v(subject)}`;
       if (expectation.parameters[2]) {
         title += " (strict)";
       }
