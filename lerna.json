@@ -1,0 +1,17 @@
+{
+  "version": "independent",
+  "npmClient": "npm",
+  "command": {
+    "init": {
+      "exact": true
+    },
+    "bootstrap": {
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
+    }
+  },
+  "packages": [
+    "modules/*"
+  ]
+}

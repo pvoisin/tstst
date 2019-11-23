@@ -6,8 +6,14 @@
       "name": "TypeScript - Current File",
       "type": "node",
       "request": "launch",
-      "args": ["${relativeFile}"],
-      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "args": [
+        "${relativeFile}"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register"
+      ],
       "sourceMaps": true,
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",
@@ -47,7 +53,7 @@
         "tdd",
         "--colors",
         "--recursive",
-        "'${workspaceFolder}/source/**/*.test.ts'"
+        "'${workspaceFolder}/modules/quantity/**/*.test.ts'"
       ],
       "cwd": "${workspaceRoot}",
       "console": "integratedTerminal"

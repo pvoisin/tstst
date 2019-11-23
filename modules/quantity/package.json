@@ -1,0 +1,33 @@
+{
+  "name": "@tstst/quantity",
+  "version": "0.0.1",
+  "description": "TSTST \"Quantity\" Module",
+  "keywords": [
+    "utility",
+    "helper",
+    "quantity",
+    "unit",
+    "measurement"
+  ],
+  "author": "Pierre Voisin <pierre.voisin@gmail.com>",
+  "lisence": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pvoisin/tstst.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pvoisin/tstst/issues"
+  },
+  "main": "distribution/index.js",
+  "files": [
+    "distribution"
+  ],
+  "scripts": {
+    "test": "mocha --require ts-node/register -u tdd --recursive --colors **/*.test.ts",
+    "compile": "tsc"
+  },
+  "dependencies": {
+    "@tstst/general": "^0.0.1",
+    "lodash": "^4.17.15"
+  }
+}
