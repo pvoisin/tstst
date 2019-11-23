@@ -1,0 +1,31 @@
+{
+  "name": "@tstst/finance",
+  "version": "0.0.1",
+  "description": "TypeScript, the Simple Things!",
+  "keywords": [
+    "utility",
+    "helper",
+    "finance"
+  ],
+  "author": "Pierre Voisin <pierre.voisin@gmail.com>",
+  "lisence": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pvoisin/tstst.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pvoisin/tstst/issues"
+  },
+  "main": "distribution/index.js",
+  "files": [
+    "distribution"
+  ],
+  "scripts": {
+    "test": "mocha --require ts-node/register -u tdd --recursive --colors **/*.test.ts",
+    "compile": "tsc"
+  },
+  "dependencies": {
+    "@tstst/general": "^0.0.1",
+    "@tstst/quantity": "^0.0.1"
+  }
+}
