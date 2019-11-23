@@ -1,19 +1,23 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
   "files.exclude": {
-    "**/*.js": {
+    "**/*.d.ts": {
       "when": "$(basename).ts"
     },
-    "**/*.d.ts": {
+    "**/*.js": {
       "when": "$(basename).ts"
     },
     "**/*.js.map": {
       "when": "$(basename).ts"
-    },
-    "distribution": true,
-    "modules/*/distribution": true
+    }
   },
   "tslint.exclude": [
     "**/node_modules/**"
-  ]
+  ],
+  "files.watcherExclude": {
+    "**/distribution/**": true
+  },
+  "search.exclude": {
+    "**/distribution": true
+  }
 }

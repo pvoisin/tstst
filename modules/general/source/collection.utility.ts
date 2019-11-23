@@ -14,7 +14,8 @@ import {
   reduce,
   transform,
 } from "lodash";
-import { isArray } from "./utility";
+import { isArray } from "./type";
+import { getValueRepresentation } from "./utility";
 
 export interface Dictionary<T = any> {
   [key: string]: T;
@@ -207,4 +208,18 @@ export function isCompatible(model: any, expectedModel: any, keyFilter?: string[
   }
 
   return result;
+}
+
+export function getCollectionRepresentation<T = unknown>(
+  items: T[],
+  includeTypeRepresentation: boolean = false
+): string {
+  let representation: string;
+
+  if (items) {
+    representation =
+      "[" + items.map((item: T) => getValueRepresentation(item, includeTypeRepresentation)).join(", ") + "]";
+  }
+
+  return representation;
 }

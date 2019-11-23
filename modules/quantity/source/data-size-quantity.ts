@@ -1,5 +1,5 @@
-import * as deepFreeze from "deep-freeze";
-import { Amount, DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from ".";
+import { freeze } from "@tstst/general";
+import { Amount, DefaultQuantity, DefaultUnit, Quantity, registerUnitConversions, Unit, UnitScale } from "./quantity";
 
 export interface DataSizeQuantity extends Quantity {}
 
@@ -7,9 +7,9 @@ export const DATA_SIZE: DataSizeQuantity = new DefaultQuantity("data size");
 
 export interface DataSizeUnit extends Unit<DataSizeQuantity> {}
 
-export interface DataSizeAmount extends Amount<DataSizeQuantity, DataSizeUnit> {}
+export interface DataAmount extends Amount<DataSizeQuantity, DataSizeUnit> {}
 
-export function isDataSizeAmount(amount: Amount): amount is DataSizeAmount {
+export function isDataSizeAmount(amount: Amount): amount is DataAmount {
   return amount && amount.unit && amount.unit.quantity === DATA_SIZE;
 }
 
@@ -45,7 +45,7 @@ export const DATA_SIZE_UNIT_SCALE: UnitScale<DataSizeQuantity> = {
   [8 * 1000 * 1000 * 1000 * 1000]: TERABYTE,
 };
 DATA_SIZE.unitScale = DATA_SIZE_UNIT_SCALE;
-deepFreeze(DATA_SIZE_UNIT_SCALE); // 🔒
+freeze(DATA_SIZE_UNIT_SCALE); // 🔒
 
 Object.freeze(DATA_SIZE); // 🔒
 

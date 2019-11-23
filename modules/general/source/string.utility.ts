@@ -1,5 +1,3 @@
-export const isString = (value: unknown): value is String => typeof value === "string";
-
 /**
  * Adds the specified prefix before the provided value.
  *

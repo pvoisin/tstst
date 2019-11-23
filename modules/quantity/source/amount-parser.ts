@@ -1,4 +1,4 @@
-import { extract } from "../string.utility";
+import { extract } from "@tstst/general";
 import { Amount, convertAmount, getUnitForSymbol, Unit } from "./quantity";
 
 export const AMOUNT_COMPONENT_PATTERN = /\s*((?:\+|-)?\d+(?:\.\d+)?)(°?[a-zA-Z²³]{1,3}(?:\/[a-zA-Z²³]{1,3})?)/;

@@ -1,5 +1,5 @@
+import { getCartesianProduct } from "@tstst/general";
 import BigNumber from "bignumber.js";
-import { getCartesianProduct } from "../collection.utility";
 
 export interface Quantity {
   name: string;

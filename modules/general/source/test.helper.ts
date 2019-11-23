@@ -1,7 +1,6 @@
-import * as freeze from "deep-freeze";
 import { concat, isNil, noop, reject } from "lodash";
 import { getItemMap } from "./collection.utility";
-import { getValueRepresentation } from "./utility";
+import { freeze, getValueRepresentation } from "./utility";
 
 export const EMPTY_STRING = "";
 export const EMPTY_ARRAY: any[] = [];

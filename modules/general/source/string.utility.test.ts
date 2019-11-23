@@ -1,6 +1,7 @@
 import { assert } from "chai";
+import { getCollectionRepresentation as $c } from "./collection.utility";
 import { extract, prefix, suffix } from "./string.utility";
-import { getCollectionRepresentation as $c, getValueRepresentation as $v } from "./utility";
+import { getValueRepresentation as $v } from "./utility";
 
 describe("String Utility", () => {
   describe("#prefix", () => {
@@ -33,11 +34,19 @@ describe("String Utility", () => {
       },
       {
         parameters: ["howdy +1s 2w-3d", pattern],
-        expectedResults: [["+1", "s"], ["2", "w"], ["-3", "d"]],
+        expectedResults: [
+          ["+1", "s"],
+          ["2", "w"],
+          ["-3", "d"],
+        ],
       },
       {
         parameters: ["\t8b1B\n2d howdy", pattern],
-        expectedResults: [["8", "b"], ["1", "B"], ["2", "d"]],
+        expectedResults: [
+          ["8", "b"],
+          ["1", "B"],
+          ["2", "d"],
+        ],
       },
       {
         parameters: ["\t8b1B\n2d howdy", pattern, true],

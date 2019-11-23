@@ -3,17 +3,14 @@
     "target": "es6",
     "lib": ["es2017"],
     "moduleResolution": "node",
-    "rootDir": "source",
-    "sourceRoot": "source",
-    "outDir": "distribution",
+    "composite": true,
     "declaration": true,
     "sourceMap": true,
     "removeComments": true,
     "noUnusedLocals": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "rootDirs": ["modules"]
   },
-  "include": ["source/**/*.ts", "test/**/*.ts"],
-  "exclude": ["node_modules"],
-  "compileOnSave": true
+  "include": ["modules/*/source/**/*.ts", "modules/*/test/**/*.ts"]
 }

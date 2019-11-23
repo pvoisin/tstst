@@ -1,5 +1,5 @@
+import { getValueRepresentation as hvr } from "@tstst/general";
 import { assert } from "chai";
-import { highlightValueRepresentation as hvr } from "../test.utility";
 import {
   BIT,
   BYTE,

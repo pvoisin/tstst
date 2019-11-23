@@ -1,3 +1,5 @@
+import * as freeze from "deep-freeze";
+
 /**
  * Object able to serialize the provided object.
  *
@@ -7,3 +9,4 @@
 export type Serializer<T, R extends string = string> = (value: T) => R;
 
 export const DEFAULT_SERIALIZER: Serializer<unknown> = (value: unknown) => String(value);
+freeze(DEFAULT_SERIALIZER);

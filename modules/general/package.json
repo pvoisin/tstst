@@ -15,9 +15,9 @@
   "bugs": {
     "url": "https://github.com/pvoisin/tstst/issues"
   },
-  "main": "/distribution/index.js",
+  "main": "distribution/index.js",
   "files": [
-    "/distribution"
+    "distribution"
   ],
   "scripts": {
     "test": "mocha --require ts-node/register -u tdd --recursive --colors **/*.test.ts",
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "deep-freeze": "^0.0.1",
+    "general": "^0.0.3",
     "lodash": "^4.17.15"
   }
 }

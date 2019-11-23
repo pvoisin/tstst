@@ -27,7 +27,6 @@
     "compile": "tsc"
   },
   "dependencies": {
-    "@tstst/general": "^0.0.1",
-    "lodash": "^4.17.15"
+    "@tstst/general": "^0.0.1"
   }
 }
